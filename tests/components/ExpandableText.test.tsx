@@ -34,4 +34,17 @@ describe("ExpandableText component", () => {
     expect(screen.getByText(longText)).toBeInTheDocument()
     expect(button).toHaveTextContent('Show Less')
   })
+
+  it("must collapse text when Show Less button is clicked", async () => {
+    render(<ExpandableText text={longText} />)
+    const showMoreButton = screen.getByRole("button", {name: 'Show More'})
+    const user = userEvent.setup()
+    await user.click(showMoreButton)
+
+    const showLessButton = screen.getByRole('button', {name: 'Show Less'})
+    await user.click(showLessButton)
+
+    expect(screen.getByText(truncatedText)).toBeInTheDocument()
+    expect(showMoreButton).toHaveTextContent("Show More")
+  })
 })
