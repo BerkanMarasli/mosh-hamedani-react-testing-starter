@@ -1,7 +1,17 @@
-import { it, expect, describe } from "vitest"
+/*
+Can eliminate having to add these imports to every test file by:
+- setting globals: true in vitest.config.ts
+- adding types: ["vitest/globals"] to tsconfig.json
+*/
+// import { it, expect, describe } from "vitest"
 import { render, screen } from "@testing-library/react"
 import Greet from "../../src/components/Greet"
-import "@testing-library/jest-dom/vitest"
+/*
+Can eliminate having to add this import to every test file by:
+- add a setup.ts file to tests folder and add import within
+- add setupFiles: 'tests/setup.ts' to vitest.config.ts
+*/
+// import "@testing-library/jest-dom/vitest"
 
 describe("Greet component", () => {
   it("must render Hello with the name when name is provided", () => {
